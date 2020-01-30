@@ -8,14 +8,25 @@ export default class CardsList extends Component {
         super( props );
         this.date = null;
         this.state = {
-            page : 1,
-            data : []
+            page: 1,
+            data: [],
+            canScroll: true
         }           
     }
 
     async componentDidMount() {
         this.setDate();
-        this.getRepos();
+        await this.getRepos();
+        await this.scrollHandler();
+
+    }
+
+    scrollHandler = async() => {
+        window.addEventListener( 'scroll', async () => {
+            if ( this.state.canScroll )
+                if ( ( window.innerHeight + window.scrollY ) >= document.body.offsetHeight )
+                    await this.getRepos();
+        });
     }
 
     setDate = () => {
@@ -32,16 +43,19 @@ export default class CardsList extends Component {
 
     getRepos = async() => {
         try {
-            const { page } = this.state;
             const { date } = this;
-            console.log(date)
+            let { page } = this.state;
+            await this.setState({ canScroll : false });
             const result = await axios.get(`https://api.github.com/search/repositories?q=created:>${ date }&sort=stars&order=desc&page=${ page }`);
             if ( result.status === 200 ) {
                 if ( result.data && result.data.items ) {
                     let data = this.state.data;
                     data.push( ...result.data.items );
+                    page++;
                     await this.setState({
-                        data
+                        data,
+                        page,
+                        canScroll: true
                     })
                 }
             }
@@ -69,7 +83,7 @@ export default class CardsList extends Component {
             });
             if ( list.length > 0 ) {
                 return (
-                    <div className="container">
+                    <div id="repos-list" className="container">
                         { list }
                     </div>
                 )
