@@ -1,9 +1,16 @@
 import React from 'react';
-import './App.css';
+
+import './App.scss';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    null
+    <div>
+      <h1 className="page-title"> The list the most starred Github repos </h1>
+        <div className="container">
+          
+        </div>
+    </div>
   );
 }
 

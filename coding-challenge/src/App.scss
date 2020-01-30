@@ -1,0 +1,47 @@
+.page-title {
+  text-align: center;
+  padding: 50px 0;
+  font-family: 'Lato', sans-serif;
+}
+
+.repo-card {
+  height: 100px;
+  height: auto;
+  border: 1px solid #000;
+  .avatar {
+    width: 100%;
+    img {
+      width: 100%;
+      height: auto;
+      padding: 10px 0;
+    }
+  }
+  .data {
+    overflow: hidden;
+    padding: 10px 10px;
+    width: 100%;
+    height: auto;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-wrap: break-word;
+    .repo-stats {
+      padding: 10px;
+      display: inline-block;
+      width: 100%;
+      .repo-stars, .repo-issues {
+        display: inline-block;
+        padding: 5px 10px;
+        border: 2px solid #000;
+        margin-right: 10px;
+        margin-top:5px
+      }
+      .repo-owner {
+        display: inline-block;
+        padding: 5px 10px;
+        margin-top:5px
+      }
+    }
+  }
+}
