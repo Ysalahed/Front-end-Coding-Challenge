@@ -13,9 +13,22 @@ export default function Card( props ) {
               <div className="repo-description"> { description } </div>
               <div className="row">
                 <div className="repo-stats">
-                  <div className="repo-stars"> { stars } Stars </div>
-                  <div className="repo-issues"> { issues }  Issue</div>
-                  <div className="repo-owner">2 days ago by { userName }.</div>
+                    <div className="repo-stars">
+                        
+                    { 
+                        stars !== 1 
+                        ? `${ stars } Stars` 
+                        : `${ stars } Star` 
+                    } 
+                    </div>
+                    <div className="repo-issues"> 
+                    { 
+                        issues !== 1 
+                        ? `${ issues } Issues` 
+                        : `${ issues } Issue` 
+                    } 
+                    </div>
+                    <div className="repo-owner">2 days ago by { userName }.</div>
                 </div>
               </div>
             </div>
