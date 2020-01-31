@@ -1,25 +1,62 @@
+$color-main: #edf1f5;
+$color-bg: #e2e6eb;
+
+
+@keyframes card-slide {
+  from {
+      opacity: .0;
+      transform: translateX(-250px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0px);
+  }
+}
+
+@keyframes title-slide {
+  from {
+      opacity: .0;
+      transform: translateY(-250px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+
+.app {
+  background-color: $color-bg;
+}
+
 .page-title {
   text-align: center;
   padding: 50px 0;
   font-family: 'Lato', sans-serif;
+  animation: title-slide 1.5s;
 }
 
 .repo-card {
+  padding: 20px;
+  background-color: $color-main;
   height: 100px;
   height: auto;
-  border: 1px solid #000;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
+  box-shadow: 9px 9px 16px rgba(163,177,198,0.6),
+              -9px -9px 16px rgba(255,255,255, 0.5);
+  animation: card-slide 1.5s;
   .avatar {
     width: 100%;
     img {
       width: 100%;
       height: auto;
-      padding: 10px 0;
+      padding: 10px 10px;
+      box-shadow: 9px 9px 16px rgba(163,177,198,0.6),
+              -9px -9px 16px rgba(255,255,255, 0.5);
     }
   }
   .data {
     overflow: hidden;
-    padding: 10px 10px;
+    padding: 20px 10px;
     width: 100%;
     height: auto;
     font-family: 'Lato', sans-serif;
@@ -33,15 +70,25 @@
       width: 100%;
       .repo-stars, .repo-issues {
         display: inline-block;
+        color: $color-main;
         padding: 5px 10px;
-        border: 2px solid #000;
         margin-right: 10px;
-        margin-top:5px
+        margin-top: 5px;
+        border: 3px solid $color-main;
+        box-shadow: 9px 9px 16px rgba(163,177,198,0.6),
+              -9px -9px 16px rgba(255,255,255, 0.5);
+        background-image: linear-gradient(to bottom right, #ef473a, #cb2d3e);
+      }
+      .repo-stars {
+        background-image: linear-gradient(to bottom right, #606c88, #3f4c6b);
       }
       .repo-owner {
         display: inline-block;
         padding: 5px 10px;
-        margin-top:5px
+        margin-top: 5px;
+        background: linear-gradient(to bottom right, #606c88, #3f4c6b);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
       }
     }
   }

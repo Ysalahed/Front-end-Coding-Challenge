@@ -6,7 +6,7 @@ import CardsList from './Components/CardsList';
 
 function App() {
   return (
-    <div>
+    <div className="app">
         <h1 className="page-title">
           The list the most starred Github repos 
         </h1>
