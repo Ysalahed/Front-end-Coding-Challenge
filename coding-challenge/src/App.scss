@@ -23,6 +23,9 @@ $color-bg: #e2e6eb;
       transform: translateY(0px);
   }
 }
+html, body {
+  background-color: $color-bg;
+}
 
 .app {
   background-color: $color-bg;
@@ -33,6 +36,9 @@ $color-bg: #e2e6eb;
   padding: 50px 0;
   font-family: 'Lato', sans-serif;
   animation: title-slide 1.5s;
+  background: linear-gradient(to bottom right, #606c88, #3f4c6b);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .repo-card {
@@ -64,6 +70,9 @@ $color-bg: #e2e6eb;
     flex-direction: column;
     justify-content: space-between;
     overflow-wrap: break-word;
+    .repo-title {
+      font-weight: 600;
+    }
     .repo-stats {
       padding: 10px;
       display: inline-block;
