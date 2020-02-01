@@ -1,0 +1,120 @@
+// Colors
+$color-main: #edf1f5;
+$color-bg: #e2e6eb;
+
+//annimations
+@keyframes card-slide {
+  from {
+      opacity: .0;
+      transform: translateX(-250px);
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0px);
+  }
+}
+
+@keyframes title-slide {
+  from {
+      opacity: .0;
+      transform: translateY(-250px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+
+//Mixins
+@mixin neumorphic-shadow {
+  box-shadow: 9px 9px 16px rgba(163,177,198,0.6),
+              -9px -9px 16px rgba(255,255,255, 0.5);
+}
+
+@mixin stats-shared {
+  display: inline-block;
+  padding: 5px 10px;
+  margin-top: 5px;
+}
+
+//Resets
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: $color-bg;
+}
+
+//Styles
+.app {
+  background-color: $color-bg;
+}
+
+.page-title {
+  text-align: center;
+  padding: 50px 0;
+  font-weight: 500;
+  font-family: 'Lato', sans-serif;
+  animation: title-slide 1.5s;
+  background: linear-gradient(to bottom right, #606c88, #3f4c6b);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.repo-card {
+  @include neumorphic-shadow;
+  padding: 30px;
+  background-color: $color-main;
+  height: 100px;
+  height: auto;
+  margin-bottom: 20px;
+  animation: card-slide 1.5s;
+  .avatar {
+    width: 100%;
+    img {
+      @include neumorphic-shadow;
+      width: 100%;
+      height: auto;
+      padding: 10px 10px;
+    }
+  }
+  .data {
+    overflow: hidden;
+    padding: 20px 10px;
+    width: 100%;
+    height: auto;
+    font-family: 'Lato', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow-wrap: break-word;
+    .repo-title {
+      font-weight: 600;
+      color: #525e7c;
+    }
+    .repo-description {
+      color: #3a3e48b0 ;
+    }
+    .repo-stats {
+      padding: 10px;
+      width: 100%;
+      display: inline-block;
+      .repo-stars, .repo-issues {
+        @include stats-shared;
+        @include neumorphic-shadow;
+        margin-right: 10px;
+        color: $color-main;
+        border: 3px solid $color-main;
+        background-image: linear-gradient(to bottom right, #ef473a, #cb2d3e);
+      }
+      .repo-stars {
+        background-image: linear-gradient(to bottom right, #606c88, #3f4c6b);
+      }
+      .repo-owner {
+        @include stats-shared;
+        background: linear-gradient(to bottom right, #606c88, #3f4c6b);
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+    }
+  }
+}
